@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title th:text="${pageTitle} + ' — Delivery Optimizer'">Delivery Optimizer</title>
+  <link rel="stylesheet" th:href="@{/css/main.css}"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🚚</text></svg>"/>
+</head>
+<body>
+
+<div class="layout">
+  <!-- ── Sidebar ─────────────────────────────────────── -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-icon">🚚</div>
+      <h1>RouteOptimizer</h1>
+      <p>Delivery Intelligence</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section">Main</div>
+      <a href="/dashboard" class="nav-link">
+        <span class="nav-icon">📊</span> Dashboard
+      </a>
+      <a href="/orders" class="nav-link">
+        <span class="nav-icon">📦</span> Orders
+      </a>
+      <a href="/orders/create" class="nav-link">
+        <span class="nav-icon">➕</span> New Order
+      </a>
+
+      <div class="nav-section" style="margin-top:1rem;">Algorithm</div>
+      <a href="/routes" class="nav-link">
+        <span class="nav-icon">🗺️</span> Route Optimizer
+      </a>
+      <a href="/routes/compare" class="nav-link">
+        <span class="nav-icon">📈</span> Compare Routes
+      </a>
+
+      <div class="nav-section" style="margin-top:1rem;">Network</div>
+      <a href="/nodes" class="nav-link">
+        <span class="nav-icon">📍</span> Delivery Nodes
+      </a>
+      <a href="/tracking" class="nav-link">
+        <span class="nav-icon">🔍</span> Track Shipment
+      </a>
+
+      <div class="nav-section" style="margin-top:1rem;">Admin</div>
+      <a href="/admin/dashboard" class="nav-link">
+        <span class="nav-icon">⚙️</span> Admin Panel
+      </a>
+      <a href="/admin/sla" class="nav-link">
+        <span class="nav-icon">🚨</span> SLA Alerts
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="user-info" id="sidebar-user-name">Loading...</div>
+      <div style="margin-top:2px;" id="sidebar-user-role"></div>
+      <button onclick="logout()" class="btn btn-ghost btn-sm" style="margin-top:10px;width:100%;">
+        Sign Out
+      </button>
+    </div>
+  </aside>
+
+  <!-- ── Main content slot ──────────────────────────── -->
+  <main class="main" th:insert="${content}">
+  </main>
+</div>
+
+<script th:src="@{/js/app.js}"></script>
+<th:block th:insert="${scripts}"></th:block>
+</body>
+</html>
